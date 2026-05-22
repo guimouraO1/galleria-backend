@@ -1,6 +1,5 @@
 package com.galleriabank.backend.infra.exception;
 
-
 import com.galleriabank.backend.exceptions.InvalidCredentialsException;
 import com.galleriabank.backend.exceptions.UserNotFoundException;
 import org.jspecify.annotations.NonNull;

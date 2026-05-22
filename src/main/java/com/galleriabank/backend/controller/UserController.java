@@ -1,7 +1,6 @@
 package com.galleriabank.backend.controller;
 
 import com.galleriabank.backend.dto.requests.RegisterRequestDTO;
-import com.galleriabank.backend.service.AuthService;
 import com.galleriabank.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
