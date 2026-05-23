@@ -4,13 +4,15 @@ import com.galleriabank.backend.dto.requests.LoginRequestDTO;
 import com.galleriabank.backend.dto.responses.LoginResponseDTO;
 import com.galleriabank.backend.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping()
+@Tag(name = "Auth", description = "Auth Routes")
 @RequiredArgsConstructor
 public class AuthController {
 
