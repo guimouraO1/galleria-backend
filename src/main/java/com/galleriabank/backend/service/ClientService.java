@@ -51,8 +51,8 @@ public class ClientService {
         return new GetClientByIdResponseDTO(
                 client.getId(),
                 client.getName(),
-                client.getPhone(),
-                client.getCpf()
+                client.getCpf(),
+                client.getPhone()
         );
     }
 

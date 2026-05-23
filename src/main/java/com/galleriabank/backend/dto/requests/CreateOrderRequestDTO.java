@@ -10,6 +10,7 @@ import java.util.List;
 public record CreateOrderRequestDTO(
 
         @Schema(example = "Pedido de escritório")
+        @Size(max = 254, message = "Description must have at most 254 characters")
         String description,
 
         @NotNull(message = "Client id is required")
@@ -24,5 +25,4 @@ public record CreateOrderRequestDTO(
         @Size(min = 3, max = 100, message = "Reference code must be between 3 and 100 characters")
         @Schema(example = "ORD-2026-0001")
         String referenceCode
-) {
-}
+) {}

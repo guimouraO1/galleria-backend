@@ -15,7 +15,7 @@ public record CreateProductRequestDTO(
         @NotNull(message = "Value is required")
         @DecimalMin(value = "0.01",  message = "Value must be greater than zero")
         @DecimalMax(value = "9999999999999.99", message = "Value exceeds maximum allowed")
+        @Digits(integer = 13, fraction = 2, message = "Value must have up to 13 integer digits and 2 decimal places")
         @Schema(example = "2499.90")
         BigDecimal value
-) {
-}
+) {}

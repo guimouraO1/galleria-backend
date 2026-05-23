@@ -20,7 +20,7 @@ CREATE TABLE clients (
 
 CREATE TABLE products (
     id BIGSERIAL PRIMARY KEY,
-    description TEXT NOT NULL,
+    description VARCHAR(254) NOT NULL,
     value DECIMAL(15,2) NOT NULL,
     deleted_at TIMESTAMP,
     created_at TIMESTAMP NOT NULL,
@@ -29,9 +29,9 @@ CREATE TABLE products (
 
 CREATE TABLE orders (
     id BIGSERIAL PRIMARY KEY,
-    reference_code TEXT,
+    reference_code VARCHAR(100),
     issued_at TIMESTAMP NOT NULL,
-    description TEXT,
+    description VARCHAR(254),
     client_id BIGINT NOT NULL,
     CONSTRAINT fk_orders_client
         FOREIGN KEY (client_id)

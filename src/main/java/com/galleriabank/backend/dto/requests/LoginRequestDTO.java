@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Size;
 public record LoginRequestDTO(
 
         @NotBlank(message = "Login is required")
-        @Size(min = 3, max = 254, message = "Name must be between 3 and 254 characters")
+        @Size(min = 3, max = 100, message = "Login must be between 3 and 100 characters")
         @Schema(example = "nickname")
         String login,
 

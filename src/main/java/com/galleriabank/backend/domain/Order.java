@@ -3,6 +3,7 @@ package com.galleriabank.backend.domain;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -21,11 +22,15 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Size(min = 3, max = 100)
+    @Column(length = 100)
     private String referenceCode;
 
     @Column(nullable = false, updatable = false)
     private LocalDateTime issuedAt;
 
+    @Size(max = 254)
+    @Column(length = 254)
     private String description;
 
     @NotNull
