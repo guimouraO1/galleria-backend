@@ -13,9 +13,4 @@ public record UpdateClientRequestDTO(
         @Pattern(regexp = "\\d{10,11}", message = "Phone must contain 10 or 11 digits")
         @Schema(example = "19989958888")
         String phone
-) {
-    @AssertTrue(message = "At least name or phone must be provided")
-    public boolean isValidUpdate() {
-        return name != null || phone != null;
-    }
-}
+) {}

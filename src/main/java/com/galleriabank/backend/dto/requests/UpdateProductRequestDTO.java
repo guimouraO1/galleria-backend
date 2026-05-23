@@ -20,9 +20,4 @@ public record UpdateProductRequestDTO(
         @Digits(integer = 13, fraction = 2, message = "Value must have up to 13 integer digits and 2 decimal places")
         @Schema(example = "2499.90")
         BigDecimal value
-) {
-    @AssertTrue(message = "At least description or value must be provided")
-    public boolean isValidUpdate() {
-        return description != null || value != null;
-    }
-}
+) {}

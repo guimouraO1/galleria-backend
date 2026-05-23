@@ -17,9 +17,4 @@ public record UpdateUserRequestDTO(
         @Pattern(regexp = ".*\\d.*", message = "Password must contain at least 1 number")
         @Pattern(regexp = ".*[^A-Za-z\\d].*", message = "Password must contain at least 1 special character")
         String password)
-{
-    @AssertTrue(message = "At least name or password must be provided")
-    public boolean isValidUpdate() {
-        return name != null || password != null;
-    }
-}
+{}
