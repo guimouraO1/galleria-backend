@@ -19,7 +19,7 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/login")
-    @Operation(summary = "Login", description = "Authenticate users")
+    @Operation(summary = "Authenticate user", description = "Authenticate user")
     public ResponseEntity<LoginResponseDTO> login(@RequestBody @Valid LoginRequestDTO body) {
         String token = this.authService.login(body);
         return ResponseEntity.ok(new LoginResponseDTO(token));

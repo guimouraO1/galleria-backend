@@ -22,10 +22,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class ClientController {
 
     final private ClientService clientService;
-        @PostMapping()
-        @Operation(summary = "Create", description = "Create clients")
-        public ResponseEntity<Void> create(@RequestBody @Valid CreateClientRequestDTO body) {
-            this.clientService.create(body);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        }
+
+    @PostMapping()
+    @Operation(summary = "Create client", description = "Create client")
+    public ResponseEntity<Void> create(@RequestBody @Valid CreateClientRequestDTO body) {
+        this.clientService.create(body);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
 }

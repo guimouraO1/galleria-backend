@@ -1,7 +1,6 @@
 package com.galleriabank.backend.infra.exception;
 
-import com.galleriabank.backend.exceptions.InvalidCredentialsException;
-import com.galleriabank.backend.exceptions.UserNotFoundException;
+import com.galleriabank.backend.exceptions.*;
 import org.jspecify.annotations.NonNull;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -32,6 +31,24 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     private @NonNull ResponseEntity<RestErrorMessage> invalidUserCredentialsException(@NonNull InvalidCredentialsException exception) {
         return ResponseEntity.status(HttpStatus.FORBIDDEN)
                 .body(new RestErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage()));
+    }
+
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    private @NonNull ResponseEntity<RestErrorMessage> userAlreadyExistsException(@NonNull UserAlreadyExistsException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage()));
+    }
+
+    @ExceptionHandler(UserDeletedException.class)
+    private @NonNull ResponseEntity<RestErrorMessage> userDeletedException(@NonNull UserDeletedException exception) {
+        return ResponseEntity.status(HttpStatus.GONE)
+                .body(new RestErrorMessage(HttpStatus.GONE, exception.getMessage()));
+    }
+
+    @ExceptionHandler(ClientAlreadyExistsException.class)
+    private @NonNull ResponseEntity<RestErrorMessage> clientAlreadyExistsException(@NonNull ClientAlreadyExistsException exception) {
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+                .body(new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage()));
     }
 
     @Override

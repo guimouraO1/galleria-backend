@@ -29,7 +29,7 @@ public class AccessTokenService {
 
             return JWT.create()
                     .withSubject(user.getLogin())
-                    .withExpiresAt(this.generateExpirationDate())
+                    .withExpiresAt(ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(2).toInstant())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
             throw new RuntimeException("Error while generating token");
@@ -41,16 +41,10 @@ public class AccessTokenService {
             Algorithm algorithm = Algorithm.RSA256(publicKey, null);
 
             return JWT.require(algorithm)
-                    .build()
-                    .verify(token)
-                    .getSubject();
+                    .build().verify(token).getSubject();
 
         } catch (JWTVerificationException exception) {
             return null;
         }
-    }
-
-    private Instant generateExpirationDate() {
-        return ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(2).toInstant();
     }
 }
