@@ -51,6 +51,18 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
                 .body(new RestErrorMessage(HttpStatus.CONFLICT, exception.getMessage()));
     }
 
+    @ExceptionHandler(ClientNotFoundException.class)
+    private @NonNull ResponseEntity<RestErrorMessage> clientNotFoundException(@NonNull ClientNotFoundException exception) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(new RestErrorMessage(HttpStatus.NOT_FOUND, exception.getMessage()));
+    }
+
+    @ExceptionHandler(ClientDeletedException.class)
+    private @NonNull ResponseEntity<RestErrorMessage> clientDeletedException(@NonNull ClientDeletedException exception) {
+        return ResponseEntity.status(HttpStatus.GONE)
+                .body(new RestErrorMessage(HttpStatus.GONE, exception.getMessage()));
+    }
+
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(
             @NonNull MethodArgumentNotValidException ex,

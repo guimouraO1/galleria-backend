@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
 @Service
@@ -32,10 +31,7 @@ public class AuthService {
 
         User user = optionalUser.get();
         if (user.getDeletedAt() != null) {
-            throw new UserDeletedException(
-                    String.format("This user has been deleted at " +
-                    DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss").format(user.getDeletedAt()))
-            );
+            throw new UserDeletedException();
         }
 
         if (!passwordEncoder.matches(body.password(), user.getPassword())) {
