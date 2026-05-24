@@ -1,3 +1,5 @@
+SET search_path TO public;
+
 CREATE TABLE users (
     id BIGSERIAL PRIMARY KEY,
     name VARCHAR(254) NOT NULL,

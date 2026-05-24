@@ -29,8 +29,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(InvalidCredentialsException.class)
     private @NonNull ResponseEntity<RestErrorMessage> invalidUserCredentialsException(@NonNull InvalidCredentialsException exception) {
-        return ResponseEntity.status(HttpStatus.FORBIDDEN)
-                .body(new RestErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                .body(new RestErrorMessage(HttpStatus.UNAUTHORIZED, exception.getMessage()));
     }
 
     @ExceptionHandler(UserAlreadyExistsException.class)
@@ -41,8 +41,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(UserDeletedException.class)
     private @NonNull ResponseEntity<RestErrorMessage> userDeletedException(@NonNull UserDeletedException exception) {
-        return ResponseEntity.status(HttpStatus.GONE)
-                .body(new RestErrorMessage(HttpStatus.GONE, exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new RestErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage()));
     }
 
     @ExceptionHandler(ClientAlreadyExistsException.class)
@@ -59,8 +59,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ClientDeletedException.class)
     private @NonNull ResponseEntity<RestErrorMessage> clientDeletedException(@NonNull ClientDeletedException exception) {
-        return ResponseEntity.status(HttpStatus.GONE)
-                .body(new RestErrorMessage(HttpStatus.GONE, exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new RestErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage()));
     }
 
     @ExceptionHandler(ProductNotFoundException.class)
@@ -71,8 +71,8 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(ProductDeletedException.class)
     private @NonNull ResponseEntity<RestErrorMessage> productDeletedException(@NonNull ProductDeletedException exception) {
-        return ResponseEntity.status(HttpStatus.GONE)
-                .body(new RestErrorMessage(HttpStatus.GONE, exception.getMessage()));
+        return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                .body(new RestErrorMessage(HttpStatus.FORBIDDEN, exception.getMessage()));
     }
 
     @Override
