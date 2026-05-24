@@ -27,7 +27,8 @@ public class AccessTokenService {
             Algorithm algorithm = Algorithm.RSA256(publicKey, secretKey);
 
             return JWT.create()
-                    .withSubject(user.getLogin())
+                    .withSubject(user.getId().toString())
+                    .withClaim("login", user.getLogin())
                     .withExpiresAt(ZonedDateTime.now(ZoneId.of("America/Sao_Paulo")).plusHours(2).toInstant())
                     .sign(algorithm);
         } catch (JWTCreationException exception) {
@@ -35,14 +36,16 @@ public class AccessTokenService {
         }
     }
 
-    public String validateToken(String token) {
+    public Long validateToken(String token) {
         try {
             Algorithm algorithm = Algorithm.RSA256(publicKey, null);
 
-            return JWT.require(algorithm)
+            String subject = JWT.require(algorithm)
                     .build().verify(token).getSubject();
 
-        } catch (JWTVerificationException exception) {
+            return Long.valueOf(subject);
+
+        } catch (JWTVerificationException | NumberFormatException exception) {
             return null;
         }
     }

@@ -30,10 +30,10 @@ public class SecurityFilter extends OncePerRequestFilter {
     protected void doFilterInternal(@NonNull HttpServletRequest request, @NonNull HttpServletResponse response, @NonNull FilterChain filterChain) throws ServletException, IOException {
 
         var token = this.recoverToken(request);
-        var subject = accessTokenService.validateToken(token);
+        var userId = accessTokenService.validateToken(token);
 
-        if (subject != null) {
-            User user = this.userRepository.findByLogin(subject)
+        if (userId != null) {
+            User user = this.userRepository.findById(userId)
                     .orElseThrow(UserNotFoundException::new);
 
             var authorities = Arrays.stream(UserAuthorities.values())

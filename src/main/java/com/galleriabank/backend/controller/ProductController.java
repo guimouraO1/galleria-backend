@@ -2,16 +2,21 @@ package com.galleriabank.backend.controller;
 
 import com.galleriabank.backend.dto.requests.CreateProductRequestDTO;
 import com.galleriabank.backend.dto.requests.UpdateProductRequestDTO;
+import com.galleriabank.backend.dto.responses.CursorPaginatedResponseDTO;
 import com.galleriabank.backend.dto.responses.GetProductByIdResponseDTO;
+import com.galleriabank.backend.dto.responses.ListProductResponseDTO;
 import com.galleriabank.backend.service.ProductService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/product")
@@ -34,6 +39,16 @@ public class ProductController {
     public ResponseEntity<GetProductByIdResponseDTO> get(@PathVariable Long id) {
         GetProductByIdResponseDTO product = this.productService.findById(id);
         return ResponseEntity.ok(product);
+    }
+
+    @GetMapping()
+    @Operation(summary = "List products", description = "List products with date cursor pagination")
+    public ResponseEntity<CursorPaginatedResponseDTO<ListProductResponseDTO>> list(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime cursor,
+            @RequestParam(required = false) Integer limit
+    ) {
+        CursorPaginatedResponseDTO<ListProductResponseDTO> products = this.productService.list(cursor, limit);
+        return ResponseEntity.ok(products);
     }
 
     @PutMapping("/{id}")

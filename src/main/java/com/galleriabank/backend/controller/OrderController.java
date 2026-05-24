@@ -1,16 +1,21 @@
 package com.galleriabank.backend.controller;
 
 import com.galleriabank.backend.dto.requests.CreateOrderRequestDTO;
+import com.galleriabank.backend.dto.responses.CursorPaginatedResponseDTO;
 import com.galleriabank.backend.dto.responses.GetOrderByIdResponseDTO;
+import com.galleriabank.backend.dto.responses.ListOrderResponseDTO;
 import com.galleriabank.backend.service.OrderService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.time.LocalDateTime;
 
 @RestController
 @RequestMapping("/order")
@@ -33,5 +38,15 @@ public class OrderController {
     public ResponseEntity<GetOrderByIdResponseDTO> get(@PathVariable Long id) {
         GetOrderByIdResponseDTO product = this.orderService.findById(id);
         return ResponseEntity.ok(product);
+    }
+
+    @GetMapping()
+    @Operation(summary = "List orders", description = "List orders with date cursor pagination")
+    public ResponseEntity<CursorPaginatedResponseDTO<ListOrderResponseDTO>> list(
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime cursor,
+            @RequestParam(required = false) Integer limit
+    ) {
+        CursorPaginatedResponseDTO<ListOrderResponseDTO> orders = this.orderService.list(cursor, limit);
+        return ResponseEntity.ok(orders);
     }
 }
