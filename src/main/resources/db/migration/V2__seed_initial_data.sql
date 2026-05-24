@@ -1,26 +1,9 @@
 SET search_path TO public;
 
 INSERT INTO users (name, login, password, deleted_at, created_at, updated_at) VALUES
-                                                                                  ('Guilherme Moura', 'guimouraoliveira', 'hash123', NULL, '2025-01-10 09:00:00', '2025-03-12 14:22:00'),
-                                                                                  ('Ana Souza', 'anasouza', 'hash123', NULL, '2025-01-12 10:15:00', NULL),
-                                                                                  ('Carlos Lima', 'carloslima', 'hash123', '2025-06-01 11:00:00', '2025-01-15 08:20:00', '2025-05-20 16:00:00'),
-                                                                                  ('Fernanda Rocha', 'fernandarocha', 'hash123', NULL, '2025-01-18 13:00:00', '2025-02-10 09:30:00'),
-                                                                                  ('Lucas Pereira', 'lucaspereira', 'hash123', NULL, '2025-01-20 17:45:00', NULL),
-                                                                                  ('Juliana Costa', 'julianacosta', 'hash123', NULL, '2025-01-22 11:10:00', '2025-04-01 12:00:00'),
-                                                                                  ('Ricardo Alves', 'ricardoalves', 'hash123', NULL, '2025-01-25 14:00:00', NULL),
-                                                                                  ('Patricia Gomes', 'patriciagomes', 'hash123', '2025-07-15 08:00:00', '2025-01-28 09:40:00', '2025-07-10 10:30:00'),
-                                                                                  ('Bruno Martins', 'brunomartins', 'hash123', NULL, '2025-02-01 15:00:00', NULL),
-                                                                                  ('Camila Ferreira', 'camilaferreira', 'hash123', NULL, '2025-02-03 08:45:00', '2025-05-05 18:00:00'),
-                                                                                  ('Eduardo Santos', 'eduardosantos', 'hash123', NULL, '2025-02-05 12:00:00', NULL),
-                                                                                  ('Mariana Ribeiro', 'marianaribeiro', 'hash123', NULL, '2025-02-07 16:00:00', '2025-03-22 13:10:00'),
-                                                                                  ('Rafael Castro', 'rafaelcastro', 'hash123', NULL, '2025-02-10 09:00:00', NULL),
-                                                                                  ('Larissa Melo', 'larissamelo', 'hash123', NULL, '2025-02-12 10:30:00', '2025-06-12 14:00:00'),
-                                                                                  ('Thiago Nunes', 'thiagonunes', 'hash123', NULL, '2025-02-15 11:20:00', NULL),
-                                                                                  ('Beatriz Oliveira', 'beatrizoliveira', 'hash123', NULL, '2025-02-18 13:45:00', '2025-04-18 17:00:00'),
-                                                                                  ('Felipe Teixeira', 'felipeteixeira', 'hash123', NULL, '2025-02-20 08:10:00', NULL),
-                                                                                  ('Aline Barros', 'alinebarros', 'hash123', NULL, '2025-02-22 14:25:00', '2025-03-30 09:00:00'),
-                                                                                  ('Vinicius Mendes', 'viniciusmendes', 'hash123', NULL, '2025-02-25 16:50:00', NULL),
-                                                                                  ('Renata Cardoso', 'renatacardoso', 'hash123', NULL, '2025-02-28 11:35:00', '2025-05-28 12:20:00');
+                                                                                  ('Guilherme Moura', 'guimoura', '$2a$10$YurdBp7ZlSG/ay8TNhKOte3FX06Gg8QKKklzzjeU2DQqht1VoO/km', NULL, '2025-01-10 09:00:00', '2025-03-12 14:22:00'),
+                                                                                  ('Ana Souza', 'anasouza', '$2a$10$YurdBp7ZlSG/ay8TNhKOte3FX06Gg8QKKklzzjeU2DQqht1VoO/km', '2025-01-12 10:15:00', '2025-01-12 10:15:00', NULL);
+
 
 INSERT INTO clients (name, cpf, phone, deleted_at, created_at, updated_at) VALUES
                                                                                ('João Silva', '12345678901', '11987654321', NULL, '2025-01-05 09:00:00', '2025-03-01 10:00:00'),

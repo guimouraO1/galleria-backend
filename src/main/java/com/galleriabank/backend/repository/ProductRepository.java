@@ -12,4 +12,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     List<Product> findByDeletedAtIsNullOrderByCreatedAtDesc(Pageable pageable);
 
     List<Product> findByDeletedAtIsNullAndCreatedAtBeforeOrderByCreatedAtDesc(LocalDateTime cursor, Pageable pageable);
+
+    Long countByDeletedAtIsNullAndCreatedAtGreaterThanEqualAndCreatedAtBefore(LocalDateTime start, LocalDateTime end);
 }

@@ -36,6 +36,7 @@ public class SecurityConfig {
                         .requestMatchers("/client", "/client/**").hasAuthority(UserAuthorities.ADMIN.name())
                         .requestMatchers("/order", "/order/**").hasAuthority(UserAuthorities.ADMIN.name())
                         .requestMatchers("/product", "/product/**").hasAuthority(UserAuthorities.ADMIN.name())
+                        .requestMatchers("/dashboard", "/dashboard/**").hasAuthority(UserAuthorities.ADMIN.name())
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .anyRequest()
                         .authenticated()

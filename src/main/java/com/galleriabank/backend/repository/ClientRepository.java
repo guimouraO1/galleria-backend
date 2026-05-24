@@ -15,4 +15,6 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     List<Client> findByDeletedAtIsNullOrderByCreatedAtDesc(Pageable pageable);
 
     List<Client> findByDeletedAtIsNullAndCreatedAtBeforeOrderByCreatedAtDesc(LocalDateTime cursor, Pageable pageable);
+
+    Long countByDeletedAtIsNullAndCreatedAtGreaterThanEqualAndCreatedAtBefore(LocalDateTime start, LocalDateTime end);
 }
